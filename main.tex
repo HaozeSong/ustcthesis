@@ -2,7 +2,7 @@
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
 
-\documentclass[degree=doctor]{ustcthesis}
+\documentclass[degree=bachelor]{ustcthesis}
 % degree    = doctor|master|bachelor
 % language  = chinese|english
 
@@ -29,28 +29,30 @@
 \copyrightpage
 
 \frontmatter
-\input{chapters/abstract.tex}
+\input{chapters/acknowledgements.tex}
+
 \tableofcontents
 % \listoffigures
 % \listoftables
-\input{chapters/notation.tex}
-
+% \input{chapters/notation.tex}
+\input{chapters/abstract.tex}
 \mainmatter
 \input{chapters/intro.tex}
-\input{chapters/floats.tex}
-\input{chapters/math.tex}
-\input{chapters/citations.tex}
-
+% \input{chapters/floats.tex}
+\input{chapters/relatedwork.tex}
+\input{chapters/workload.tex}
+\input{chapters/experiment.tex}
+\input{chapters/conclusion.tex}
+%\input{chapters/math.tex}
+%\input{chapters/citations.tex}
 \backmatter
 \bibliographystyle{ustcthesis-numerical}  % 顺序编码制
 % \bibliographystyle{ustcthesis-authoryear} % 著者出版年制
-% \bibliographystyle{ustcthesis-bachelor}   % 本科生参考文献的格式
+\bibliographystyle{ustcthesis-bachelor}   % 本科生参考文献的格式
 \bibliography{bib/ustc}
 
 \appendix
-\input{chapters/complementary.tex}
-
-\input{chapters/acknowledgements.tex}
-\input{chapters/publications.tex}
+%\input{chapters/complementary.tex}
+%\input{chapters/publications.tex}
 
 \end{document}

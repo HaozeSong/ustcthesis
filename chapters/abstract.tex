@@ -2,33 +2,36 @@
 
 \ustcsetup{
   keywords = {
-    中国科学技术大学, 学位论文, \LaTeX{} 模板, 学士, 硕士, 博士
+    分布式事务, 并发控制协议, 共识协议, 异地冗余, 强一致性
   },
   keywords* = {
-    University of Science and Technology of China (USTC), Thesis,
-    \LaTeX{} Template, Bachelor, Master, PhD
+    Distributed Transaction, Concurrency Control Protocol,
+    \\Consensus Protocol, Geo-Replica, Strong Consistency
   },
 }
 
 \begin{abstract}
-  摘要是论文内容的总结概括，应简要说明论文的研究目的、基本研究内容、 研究方法或
-  过程、结果和结论，突出论文的创新之处。摘要中不宜使用公式、图表，不引用文献。
-  博士论文中文摘要一般800～1000个汉字，硕士论文中文摘要一般600个汉字。英文摘要的
-  篇幅参照中文摘要。
+  随着计算机科学的不断发展，计算机系统所需要存储和处理的数据量也日益增长。为了向用户和应用开发者提供可拓展的容错存储平台，分布式数据库逐渐成为主流。同时，为了实现更高的容错等级，以及更好的优化全球用户远程读取的时延问题，异地冗余的分布式数据中心氤氲而生。
+  
+  事务是恢复和并发控制的基本单位。诸多系统的实现都离不开事务，例如：银行系统、社交网络、搜索系统等等。因此，在分布式冗余数据中心的基础上，实现低时延、高吞吐量的事务处理协议是重要且必要的。
 
-  关键词另起一行并隔写在摘要下方，一般3～8个词，中文关键词间空一字或用分号“；”隔
-  开。英文摘要的关键词与中文摘要的关键词应完全一致，中间用逗号“,”或分号“;”隔开。
+  传统的分布式容错事务的做法，是在共识协议（例如：Paxos、Raft）之上，提供了并发控制协议（例如：2PL、OCC）\cite{Spanner}。这种做法提供了可拓展性，高可用性和强一致性。但在异地冗余存储的环境下，这种策略需要两次的跨数据中心协同调度，一次用于并发控制，另一次用于容错共识机制。由于跨大陆网络链路的高延迟，这种情况下的事务处理的代价变得特别高，事务处理的时延大。并且高时延进一步提高了事务的冲突概率，使得系统的性能变得更差。
+  
+  为了更好地满足实际应用在该背景下的需求，近年来，有许多创新的工作优化了容错协议和并发控制协议的实现，他们提供了一体化的设计思想，取缔了分层式的协议设计。实现了低时延、高吞吐量。比如：Tapir\cite{Tapir}、Janus\cite{Janus}、Ocean Vista\cite{OV}、SLOG\cite{SLOG}，这些工作在不同方面实现了较好的表现，Tapir在低冲突的条件下实现了低时延高吞吐量、Janus在高冲突的条件下实现了低时延高吞吐量、OV采用了批处理的思想，放弃了部分时延得到了更高的吞吐量、SLOG则使用分治的策略，将事务分为本地事务和异地事务，并分别进行了优化。
+
+  本文旨在探讨和研究在满足事务ACID性质和序列化模型（强一致性模型）的前提下，实现低时延和高吞吐量的目标的策略方法。
 
 \end{abstract}
 
 \begin{enabstract}
-  This is a sample document of USTC thesis \LaTeX{} template for bachelor,
-  master and doctor. The template is created by zepinglee and seisman, which
-  orignate from the template created by ywg. The template meets the
-  equirements of USTC theiss writing standards.
+  With the continuous development of Computer Science, the amount of data that computer system needs to store and process is increasing. In order to provide users and application developers with scalable and fault-tolerant storage platform, distributed Data-Center has gradually become the mainstream. Also, in order to achieve a higher level of fault tolerance and optimize the global users' remote reading latency, redundant Geo-distributed Data-Center emerges.
 
-  This document will show the usage of basic commands provided by \LaTeX{} and
-  some features provided by the template. For more information, please refer to
-  the template document ustcthesis.pdf.
+  Transaction is the basic unit of recovery and concurrency control. Many systems implement depend on transactions, such as banking system, social network, search system. Therefore, it is important and necessary to implement a transaction processing protocol on distributed redundant Data-Center with low latency and high throughput.
+
+  Conventional fault-tolerant distributed transactions layer a traditional concurrency control protocol on top of the Paxos consensus protocol\cite{Spanner}. This approach provides scalability, availability, and strict serializability. When used for wide-area storage, however, this approach incurs crossdata-center coordination twice, in serial: once for concurrency control, and then once for consensus. Transaction processing in this scenario is particularly costly due to the high latency of cross-continent network links, which inﬂates concurrency control and data replication overheads and leads to a worse performance.
+  
+  To better meet the needs of practical applications, in recent years, there are many innovative works to optimize the implementation of fault-tolerant protocol and concurrency control protocol. They provide an integrated design choice. Low latency and high throughput are realized. For example: Tapir\cite{Tapir}、Janus\cite{Janus}、Ocean Vista\cite{OV}、SLOG\cite{SLOG}, these works have achieved better performance in different aspects. Tapir has achieved low latency and high throughput under the low contention, Janus has achieved low latency and high throughput under the high contention, OV has adopted the idea of batch processing, gave up part of the latency performance to get higher throughput, slog in another way has used the strategy of divide and conquer, it divided the transaction into local transaction and remote transaction Transaction, and optimize them respectively.
+
+  The purpose of this paper is to discuss the strategy to achieve the goal of low latency and high throughput with ACID properties and strong consistency. 
 
 \end{enabstract}
